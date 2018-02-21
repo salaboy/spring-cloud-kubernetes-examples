@@ -28,7 +28,10 @@ Next, you can play with this Spring Boot application in the cloud using the foll
 ```
 mvn clean package fabric8:deploy -Pkubernetes
 ```  
-   
+
+Notice that the fabric8 plugins doesn't work with Spring Boot 2 (different PATH for the health actuator). 
+So you will need to manually change the deployment yaml inside the Kubernetes Dashboard to point from:
+/health to /actuator/health until this issue gets resolved: https://github.com/fabric8io/fabric8-maven-plugin/issues/1206   
 When the application has been deployed, you can access its service or endpoint url using this command:
 ```   
 minikube service kubernetes-hello-world --url
